@@ -7,6 +7,9 @@ import L from 'leaflet';
 import blackImage from "./assets/icon_map2.png";
 import redImage1 from "./assets/icon_red1.png";
 import redImage2 from "./assets/icon_red2.png";
+import Container_Map from './Container_Map';
+import Notes_Map from './Notes_Map';
+
 
 const App = () => {
 
@@ -57,16 +60,28 @@ const App = () => {
     },
     {
       id: 8,
-      geocode: [45.50066124750853, -73.70233110510962],
-      description: "539 000$ - 3 chambres et 2 sdb- year 1990",
+      geocode: [45.570628999721265, -73.54558273209418],
+      description: "429 905$ - 2 chambres et 1 sdb- En construction , Neuve",
       type: "condo"
     },
     {
       id: 9,
-      geocode: [45.5355265479809, -73.62169191860187],
-      description: "485 000$ - 1 chambre et 1 sdb- year 2014",
+      geocode: [45.57446641604179, -73.54803273209403],
+      description: "459 000$ - 2 chambre et 2 sdb- year 2017",
       type: "condo"
     },
+    {
+      id: 10,
+      geocode: [45.58187521475713, -73.53652051675263],
+      description: "750 000$ - 1 x 5 ½, 1 x 9 ½ - year 1958",
+      type: "duplex"
+    },
+    {
+      id: 11,
+      geocode: [45.571385444917944, -73.53786834743516],
+      description: "449 900$ - 3 chambre et 2 sdb- year 2016",
+      type: "condo"
+    }
   ]
   const redIcon1 = 
   L.divIcon({
@@ -91,36 +106,17 @@ const App = () => {
     iconAnchor: [19, 38],
   });
 
-  const condoLocations = markers.filter(marker => marker.type === "condo").map(marker=>marker.geocode);
-  const duplexLocations = markers.filter(marker => marker.type === "duplex").map(marker=>marker.geocode);
-  const triplexLocations = markers.filter(marker => marker.type === "triplex").map(marker=>marker.geocode);
-  
-  // const blackIcon = new Icon({
-  //   iconUrl: require("./assets/icon-map2.png"),
-  //   iconSize:[38,38]
-  // });
+ 
   return (
-    <MapContainer center={center}
-                  zoom={13}
-                  style = {{width: "100vw", height: "100vh"}}
-                 >
-      <TileLayer 
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {markers.map(marker =>(
-        <Marker 
-          position={marker.geocode} 
-          icon={marker.type !== "triplex"? (marker.type !== "duplex" ? blackIcon : redIcon2): redIcon1}>
-            <Popup><p><em>{marker.description}</em></p></Popup>
-          </Marker> 
-      ))}   
-        <Polyline positions={condoLocations} color="black" weight={3} opacity={0.7}/>    
-        <Polyline positions={duplexLocations} color="red" weight={3} opacity={0.7}/>    
-        <Polyline positions={triplexLocations} color="green" weight={3} opacity={0.7}/>    
-
-    </MapContainer>
-
+    <div className="map-wrapper">
+      <div className="map-container">
+        <Container_Map markers = {markers} blackIcon={blackIcon} redIcon1={redIcon1} redIcon2={redIcon2} center={center}/>
+      </div>
+      <div className="info-container">
+        <Notes_Map blackImg={blackImage} redImg1={redImage1} redImg2={redImage2}/>
+      </div>
+    </div>
+   
   )
 }
 

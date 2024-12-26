@@ -13,8 +13,36 @@
     height: 100vh;
     width: 100vw;
 }
-
-/* sizing of map container */
-.leaflet-container {
+.map-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100vw; /* Full viewport width */
     height: 100vh;
-}
+  }
+  
+  .map-container {
+    flex: 4; /* Map takes up 2 parts of the space */
+    width: 100%; /* Full height of the parent container */
+    height: 100%;
+
+  }
+  
+  .info-container {
+    flex: 1; /* Info section takes up 1 part of the space */
+    padding: 20px;
+    background-color: #f4f4f4; /* Light gray background for the info section */
+    width: 100%; /* Full height of the parent container */
+    height: 100%;
+    overflow-y: auto; /* Allow scrolling if the content exceeds the container height */
+  }
+
+  /* Notes_Map */
+
+  .info-each-icon {
+    display: flex;
+    padding: 10px;
+  }
+
+  .info-each-icon p {
+    padding-left: 10px;
+  }
