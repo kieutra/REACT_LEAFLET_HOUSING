@@ -10,11 +10,11 @@ const Notes_Map = ({blackImg, redImg1, redImg2}) => {
             <p>Condo</p>
         </div>
         <div className="info-each-icon">
-            <img src={redImg1} alt="Map Icon1" style={{ width: '30px', height: '30px' }} />
+            <img src={redImg2} alt="Map Icon1" style={{ width: '30px', height: '30px' }} />
             <p>Duplex</p>
         </div>
         <div className="info-each-icon">
-            <img src={redImg2} alt="Map Icon2" style={{ width: '30px', height: '30px' }} />
+            <img src={redImg1} alt="Map Icon2" style={{ width: '30px', height: '30px' }} />
             <p>Triplex</p>
         </div>
     </div>
